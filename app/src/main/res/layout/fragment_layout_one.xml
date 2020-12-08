@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/shine"
+
+    android:id="@+id/line_two"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+
+
+
+
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/two_line"
+            android:visibility="gone"
+            android:background="#cc323d3c"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                >
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+
+                    android:orientation="vertical"
+                    android:background="@drawable/backgoround_linear"
+                    android:layout_centerInParent="true"
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textColor="#fffb08"
+                android:gravity="center"
+                android:text="WELCOME "
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:textColor="#ff0026"
+                android:gravity="center"
+                android:textSize="35dp"
+                android:text="CLICK  CIRCLE BUTTON "
+                />
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/my_line_search"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            >
+            <io.supercharge.shimmerlayout.ShimmerLayout
+                android:id="@+id/shimmer_text_for"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:layout_height="wrap_content"
+                app:shimmer_color="#f9a807"
+
+
+                android:layout_centerHorizontal="true"
+                app:shimmer_animation_duration="4000">
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+
+
+
+                    android:background="@drawable/add_file"
+
+                    android:id="@+id/btn_add"/>
+
+            </io.supercharge.shimmerlayout.ShimmerLayout>
+
+
+        </RelativeLayout>
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recyclerView_one"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/floating_action_button"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                android:src="@drawable/chevron_down"
+                app:layout_anchor="@id/recyclerView_one"
+                app:layout_anchorGravity="bottom|right|end" />
+
+        </android.support.design.widget.CoordinatorLayout>
+    </LinearLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

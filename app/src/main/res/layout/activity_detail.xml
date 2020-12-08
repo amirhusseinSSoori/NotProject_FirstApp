@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/line_fure"
+    android:background="@drawable/shine"
+    tools:context=".InputActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar_one"
+        android:elevation="4dp"
+        android:theme="@style/myToolbarColor"
+
+
+        ></android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical">
+
+
+
+
+
+        <EditText
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:id="@+id/Detail_Titel"
+            android:textSize="25dp"
+            android:imeOptions="actionDone"
+            android:visibility="gone"
+            android:lines="1"
+            android:typeface="serif"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColorHint="#ae8888"
+            android:hint="Titel"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:id="@+id/Detail_txt_Titel"
+            android:lines="1"
+            android:maxLength="20"
+            android:textSize="25dp"
+            android:typeface="serif"
+            android:textColorHint="#ae8888"
+           />
+
+
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            ></LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <com.amir.ss.noteproject.LineEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:visibility="gone"
+                android:typeface="serif"
+                android:id="@+id/Detail_Detail"
+                android:textSize="20dp"
+                android:textColorHint="#ae8888"
+                android:hint="Enter Something"/>
+            <com.amir.ss.noteproject.LineTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:typeface="serif"
+                android:id="@+id/Detail_txt_Detail"
+                android:textSize="25dp"
+                android:textColorHint="#ae8888"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>
