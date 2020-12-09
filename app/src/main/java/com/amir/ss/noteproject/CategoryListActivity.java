@@ -12,10 +12,7 @@ import java.io.IOException;
 
 public abstract class CategoryListActivity extends Activity {
 
-
-
-
-        void filllist(){
+    void filllist(){
             DataBaseHelper dataBaseHelper=new DataBaseHelper(CategoryListActivity.this);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
 
