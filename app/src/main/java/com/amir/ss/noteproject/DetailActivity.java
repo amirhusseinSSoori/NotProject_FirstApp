@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amir.ss.noteproject.data.db.DataBaseHelper;
+
 public class DetailActivity extends AppCompatActivity {
 
 

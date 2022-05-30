@@ -10,9 +10,12 @@ import android.widget.ImageButton;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amir.ss.noteproject.data.db.DataBaseHelper;
+import com.amir.ss.noteproject.ui.MainViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
@@ -29,6 +32,8 @@ public class NotesListFragment extends Fragment {
     MyAdapter adapter;
     View view;
 
+    MainViewModel mainViewModel;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,10 @@ public class NotesListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+
+
         view = inflater.inflate(R.layout.fragment_notes_list, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_one);
         linearLayout = (ConstraintLayout) view.findViewById(R.id.line_two);
@@ -118,10 +127,17 @@ public class NotesListFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
-        mRecyclerView.setLayoutManager(layoutManager);
-        adapter = new MyAdapter(dataBaseHelper.getCategory(), getActivity().getApplicationContext(), dataBaseHelper, getActivity().getFragmentManager(), mRecyclerView);
-        mRecyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+
+        mainViewModel._resultList.observe(getViewLifecycleOwner(),observe -> {
+
+            adapter = new MyAdapter(dataBaseHelper.getCategory(), getActivity().getApplicationContext(), dataBaseHelper, getActivity().getFragmentManager(), mRecyclerView);
+            mRecyclerView.setAdapter(adapter);
+            mRecyclerView.setLayoutManager(layoutManager);
+            adapter.notifyDataSetChanged();
+
+        });
+
     }
 
 

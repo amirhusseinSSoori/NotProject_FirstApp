@@ -16,6 +16,8 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amir.ss.noteproject.data.db.DataBaseHelper;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

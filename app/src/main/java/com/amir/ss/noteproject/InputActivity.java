@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 
+import com.amir.ss.noteproject.data.db.DataBaseHelper;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

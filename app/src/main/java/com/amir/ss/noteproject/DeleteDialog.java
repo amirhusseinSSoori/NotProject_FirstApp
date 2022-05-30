@@ -12,6 +12,8 @@ import android.widget.Button;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amir.ss.noteproject.data.db.DataBaseHelper;
+
 
 @SuppressLint("ValidFragment")
 public class DeleteDialog extends DialogFragment {

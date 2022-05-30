@@ -1,20 +1,23 @@
-package com.amir.ss.noteproject;
+package com.amir.ss.noteproject.data.db;
+
+import static com.amir.ss.noteproject.data.db.Query.CATEGORY_CREATE;
+import static com.amir.ss.noteproject.data.db.Query.CATEGORY_INSERT;
+import static com.amir.ss.noteproject.data.db.Query.CATEGORY_SELECT;
+import static com.amir.ss.noteproject.data.db.Query.Category_DELETE;
+import static com.amir.ss.noteproject.data.db.Query.Category_UPDATE;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.amir.ss.noteproject.Category;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-    static final String CATEGORY_CREATE = "CREATE TABLE IF NOT EXISTS Category(Categoryid INTEGER PRIMARY KEY AUTOINCREMENT,Titel TEXT,Detail TEXT, Date TEXT)";
-    static final String CATEGORY_INSERT = "INSERT INTO Category (Titel,Detail,Date) VALUES(?,?,?)";
-    static final String CATEGORY_SELECT = "SELECT Categoryid,Titel ,Detail,Date From Category";
-    static final String Category_DELETE = "DELETE From Category Where Categoryid = ?";
-    static final String Category_UPDATE = "UPDATE Category SET Titel = ?, Detail = ?Where Categoryid = ?";
 
     public void UpdateCategory(int Categoryid, String titel, String detail) {
         getWritableDatabase().execSQL(Category_UPDATE, new Object[]{titel, detail, Categoryid});
@@ -24,9 +27,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, "mydata_base", null, 1);
     }
 
-    public void deleteCategory(int CategoryId) {
-        getWritableDatabase().execSQL(Category_DELETE, new Object[]{CategoryId});
-    }
 
     public List<Category> getCategory() {
         ArrayList<Category> categories = new ArrayList<>();
@@ -61,4 +61,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    public void deleteCategory(int CategoryId) {
+        getWritableDatabase().execSQL(Category_DELETE, new Object[]{CategoryId});
+    }
+
 }
