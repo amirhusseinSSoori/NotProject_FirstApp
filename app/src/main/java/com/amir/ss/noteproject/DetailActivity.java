@@ -4,15 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
-import android.opengl.Visibility;
-import android.os.Build;
-import android.os.Environment;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,6 +26,8 @@ import java.util.Locale;
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
 import static maes.tech.intentanim.CustomIntent.customType;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -46,7 +43,7 @@ public class DetailActivity extends AppCompatActivity {
 
  LinearLayout layout;
 
-    private android.support.v7.widget.Toolbar toolbar;
+    private androidx.appcompat.widget.Toolbar toolbar;
 
 
     @Override
@@ -76,7 +73,7 @@ public class DetailActivity extends AppCompatActivity {
         edit_detail=(EditText)findViewById(R.id.Detail_Detail);
         text_titel=(TextView)findViewById(R.id.Detail_txt_Titel);
         text_detail=(TextView)findViewById(R.id.Detail_txt_Detail);
-        toolbar=(android.support.v7.widget.Toolbar)findViewById(R.id.toolbar_one);
+        toolbar= (androidx.appcompat.widget.Toolbar)findViewById(R.id.toolbar_one);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setTitle("");

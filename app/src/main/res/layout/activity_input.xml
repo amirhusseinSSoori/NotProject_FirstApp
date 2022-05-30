@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="15dp"
             android:orientation="vertical"
-            android:background="#ed062d"></LinearLayout>
+            android:background="#ed062d"/>
 
 
     <ScrollView

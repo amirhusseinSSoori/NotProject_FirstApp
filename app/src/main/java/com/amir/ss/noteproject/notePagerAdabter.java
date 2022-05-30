@@ -2,12 +2,14 @@ package com.amir.ss.noteproject;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import net.appitiza.android.drawingpad.drawpad.views.DrawingView;
 
@@ -17,7 +19,7 @@ public class notePagerAdabter extends FragmentPagerAdapter {
     public notePagerAdabter(FragmentManager fm) {
         super(fm);
     }
- Context context;
+   Context context;
 
     @Override
     public Fragment getItem(int position) {

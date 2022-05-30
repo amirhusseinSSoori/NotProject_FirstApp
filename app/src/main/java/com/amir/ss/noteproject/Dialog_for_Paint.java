@@ -16,8 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +26,8 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+
+import androidx.core.app.ActivityCompat;
 
 import net.appitiza.android.drawingpad.drawpad.views.DrawingView;
 

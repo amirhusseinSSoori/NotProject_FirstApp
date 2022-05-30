@@ -15,6 +15,6 @@
         android:layout_width="match_parent"
         android:layout_centerInParent="true"
         android:id="@+id/my_pictrue"
-        android:layout_height="match_parent"></net.appitiza.android.drawingpad.drawpad.views.DrawingView>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

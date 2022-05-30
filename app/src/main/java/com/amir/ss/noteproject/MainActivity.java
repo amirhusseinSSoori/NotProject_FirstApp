@@ -8,13 +8,10 @@ import android.content.Intent;
 import android.graphics.Color;
 
 import android.net.Uri;
-import android.os.Environment;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import android.os.Environment;
+
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,7 +25,13 @@ import java.util.ArrayList;
 
 import static maes.tech.intentanim.CustomIntent.customType;
 
-    public class MainActivity extends AppCompatActivity{
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+
+public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private FragmentPagerAdapter adapter;
     private TabLayout layout;

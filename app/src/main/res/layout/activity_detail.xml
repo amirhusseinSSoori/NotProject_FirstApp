@@ -10,7 +10,7 @@
     tools:context=".InputActivity">
 
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
@@ -19,7 +19,7 @@
         android:theme="@style/myToolbarColor"
 
 
-        ></android.support.v7.widget.Toolbar>
+        ></androidx.appcompat.widget.Toolbar>
 
 
     <LinearLayout
@@ -68,7 +68,7 @@
             android:layout_height="15dp"
             android:orientation="vertical"
             android:background="@color/colorPrimary"
-            ></LinearLayout>
+            />
 
     <ScrollView
         android:layout_width="match_parent"

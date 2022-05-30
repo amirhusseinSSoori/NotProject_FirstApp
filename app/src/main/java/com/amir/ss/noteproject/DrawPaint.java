@@ -4,10 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import net.appitiza.android.drawingpad.drawpad.views.DrawingView;
 
