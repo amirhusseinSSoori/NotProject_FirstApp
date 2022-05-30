@@ -33,9 +33,6 @@
         </activity>
         <activity android:name=".InputActivity" />
         <activity android:name=".DetailActivity" />
-        <activity android:name=".DrawPaint"></activity>
-
-
 
 
     </application>

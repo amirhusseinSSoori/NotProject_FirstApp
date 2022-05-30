@@ -8,8 +8,6 @@
     android:id="@+id/line_fure"
     android:background="@drawable/shine"
     tools:context=".InputActivity">
-
-
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -17,20 +15,11 @@
         android:id="@+id/toolbar_one"
         android:elevation="4dp"
         android:theme="@style/myToolbarColor"
-
-
-        ></androidx.appcompat.widget.Toolbar>
-
-
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="vertical">
-
-
-
-
-
         <EditText
             android:singleLine="true"
             android:layout_width="match_parent"
@@ -59,11 +48,8 @@
             android:textColorHint="#ae8888"
            />
 
-
-
     </LinearLayout>
-
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="15dp"
             android:orientation="vertical"
@@ -98,10 +84,6 @@
                 />
 
         </LinearLayout>
-
     </ScrollView>
-
-
-
 
 </LinearLayout>

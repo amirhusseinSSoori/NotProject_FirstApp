@@ -3,31 +3,31 @@ package com.amir.ss.noteproject;
 import java.io.Serializable;
 
 public class Category implements Serializable {
-    private int Categoryid;
+    private int CategoryId;
 
 
-
-    private String Titel;
+    private String Title;
     private String Date;
     private String Detail;
 
     public Category() {
 
     }
-    public int getCategoryid() {
-        return Categoryid;
+
+    public int getCategoryId() {
+        return CategoryId;
     }
 
-    public void setCategoryid(int categoryid) {
-        Categoryid = categoryid;
+    public void setCategoryId(int categoryId) {
+        CategoryId = categoryId;
     }
 
-    public String getTitel() {
-        return Titel;
+    public String getTitle() {
+        return Title;
     }
 
-    public void setTitel(String name) {
-        Titel = name;
+    public void setTitle(String name) {
+        Title = name;
     }
 
     public String getDate() {
@@ -45,8 +45,9 @@ public class Category implements Serializable {
     public void setDetail(String detail) {
         Detail = detail;
     }
+
     public Category(String titel, String date) {
-        setTitel(titel);
+        setTitle(titel);
         setDate(date);
     }
 }

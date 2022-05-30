@@ -7,8 +7,6 @@ public class FileMode {
     private Uri uri;
 
 
-
-
     public String getDetail() {
         return Detail;
     }

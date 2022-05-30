@@ -8,7 +8,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-public class LineTextView extends TextView { private Rect mRect;
+public class LineTextView extends TextView {
+    private Rect mRect;
     private Paint mPaint;
 
     public LineTextView(Context context, AttributeSet attrs) {
