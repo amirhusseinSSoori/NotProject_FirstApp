@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initialFragmentContainer(){
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, MainFragment.class, null)
