@@ -4,15 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <androidx.viewpager.widget.ViewPager
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@+id/tab_one"-->
+<!--        android:id="@+id/view_pager_one"/>-->
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/tab_one"-->
+<!--        android:background="@color/colorPrimary"-->
+<!--        />-->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tab_one"
-        android:id="@+id/view_pager_one"/>
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tab_one"
-        android:background="@color/colorPrimary"
-        />
+        android:layout_height="match_parent"/>
 </RelativeLayout>

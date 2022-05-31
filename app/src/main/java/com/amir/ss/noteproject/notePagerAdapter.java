@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.amir.ss.noteproject.ui.main.DrawsListFragment;
 import com.amir.ss.noteproject.ui.main.NotesListFragment;
 
 public class notePagerAdapter extends FragmentPagerAdapter {

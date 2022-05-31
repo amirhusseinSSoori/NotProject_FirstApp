@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject;
+package com.amir.ss.noteproject.ui.main;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amir.ss.noteproject.DrawsAdapter;
+import com.amir.ss.noteproject.FileMode;
+import com.amir.ss.noteproject.MainActivity;
+import com.amir.ss.noteproject.PaintDialog;
+import com.amir.ss.noteproject.R;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,10 +32,6 @@ public class DrawsListFragment extends Fragment {
     PaintDialog paint;
     View view;
     String date;
-
-
-    DrawsListFragment() {
-    }
 
 
     @Override
@@ -71,7 +73,7 @@ public class DrawsListFragment extends Fragment {
 
 
         try {
-            ((TextView) ((MainActivity) getActivity()).myView.findViewById(R.id.draw_name)).setText((((MainActivity) getActivity()).readList()).get(2).getDetail());
+            ((TextView) ((MainActivity) getActivity()).findViewById(R.id.draw_name)).setText((((MainActivity) getActivity()).readList()).get(2).getDetail());
         } catch (Exception e) {
             e.printStackTrace();
         }
