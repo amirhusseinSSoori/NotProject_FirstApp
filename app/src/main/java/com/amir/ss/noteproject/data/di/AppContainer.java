@@ -1,6 +1,6 @@
 package com.amir.ss.noteproject.data.di;
 
-import static com.amir.ss.noteproject.data.di.LocalModule.provideDataBase;
+import static com.amir.ss.noteproject.data.di.local.LocalModule.provideDataBase;
 
 import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSourceImp;
@@ -10,6 +10,8 @@ import com.amir.ss.noteproject.data.datasource.local.remove.DeleteNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.remove.DeleteNotesSourceImp;
 import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSourceImp;
+import com.amir.ss.noteproject.data.di.local.DataSourceLocalModule;
+import com.amir.ss.noteproject.data.di.local.RepositoryLocalModule;
 import com.amir.ss.noteproject.data.repository.notes.insert.InsertNotesRepository;
 import com.amir.ss.noteproject.data.repository.notes.list.ListNotesRepository;
 import com.amir.ss.noteproject.data.repository.notes.remove.DeleteNotesRepository;
@@ -20,37 +22,37 @@ public class AppContainer {
 
     // for dataSource
     private InsertNotesSource provideInsertNoteSource() {
-        return DataSourceModule.insertNotesInstance(provideDataBase());
+        return new DataSourceLocalModule().insertNotesInstance(provideDataBase());
     }
 
     private DeleteNotesSource provideDeleteNoteSource() {
-        return DataSourceModule.deleteNotesInstance(provideDataBase());
+        return new DataSourceLocalModule().deleteNotesInstance(provideDataBase());
     }
 
     private ListNotesSource provideListNoteSource() {
-        return DataSourceModule.listNotesSourceInstance(provideDataBase());
+        return new DataSourceLocalModule().listNotesSourceInstance(provideDataBase());
     }
 
     private UpdateNotesSource provideUpdateNoteSource(){
-        return DataSourceModule.updateNotesInstance(provideDataBase());
+        return new DataSourceLocalModule().updateNotesInstance(provideDataBase());
     }
 
 
     // for repository
     private InsertNotesRepository provideInsertRepository() {
-        return RepositoryModule.insertRepositoryInstance((InsertNotesSourceImp) provideInsertNoteSource());
+        return new RepositoryLocalModule().insertRepositoryInstance((InsertNotesSourceImp) provideInsertNoteSource());
     }
 
     private DeleteNotesRepository provideDeleteRepository() {
-        return RepositoryModule.deleteRepositoryInstance((DeleteNotesSourceImp) provideDeleteNoteSource());
+        return new RepositoryLocalModule().deleteRepositoryInstance((DeleteNotesSourceImp) provideDeleteNoteSource());
     }
 
     private ListNotesRepository provideListNotesRepository() {
-        return RepositoryModule.showRepositoryInstance((ListNotesSourceImp) provideListNoteSource());
+        return new RepositoryLocalModule().showRepositoryInstance((ListNotesSourceImp) provideListNoteSource());
     }
 
     private UpdateNotesRepository provideUpdateRepository(){
-        return RepositoryModule.updateNotesRepositoryInstance((UpdateNotesSourceImp) provideUpdateNoteSource());
+        return new RepositoryLocalModule().updateNotesRepositoryInstance((UpdateNotesSourceImp) provideUpdateNoteSource());
     }
 
 

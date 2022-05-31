@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject.data.di;
+package com.amir.ss.noteproject.data.di.local;
 
 import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSourceImp;
 import com.amir.ss.noteproject.data.datasource.local.list.ListNotesSourceImp;
@@ -13,21 +13,21 @@ import com.amir.ss.noteproject.data.repository.notes.remove.DeleteNotesRepositor
 import com.amir.ss.noteproject.data.repository.notes.update.UpdateNotesRepository;
 import com.amir.ss.noteproject.data.repository.notes.update.UpdateNotesRepositoryImp;
 
-public class RepositoryModule {
+public class RepositoryLocalModule {
 
-    public static InsertNotesRepository insertRepositoryInstance(InsertNotesSourceImp insertNotesSourceImp) {
+    public InsertNotesRepository insertRepositoryInstance(InsertNotesSourceImp insertNotesSourceImp) {
         return new InsertNotesRepositoryImp(insertNotesSourceImp);
     }
 
-    public static DeleteNotesRepository deleteRepositoryInstance(DeleteNotesSourceImp deleteNotesSourceImp) {
+    public DeleteNotesRepository deleteRepositoryInstance(DeleteNotesSourceImp deleteNotesSourceImp) {
         return new DeleteNotesRepositoryImp(deleteNotesSourceImp);
     }
 
-    public static ListNotesRepository showRepositoryInstance(ListNotesSourceImp listNotesSourceImp) {
+    public ListNotesRepository showRepositoryInstance(ListNotesSourceImp listNotesSourceImp) {
         return new ListNotesRepositoryImp(listNotesSourceImp);
     }
 
-    public static UpdateNotesRepository updateNotesRepositoryInstance(UpdateNotesSourceImp updateNotesSourceImp){
+    public UpdateNotesRepository updateNotesRepositoryInstance(UpdateNotesSourceImp updateNotesSourceImp) {
         return new UpdateNotesRepositoryImp(updateNotesSourceImp);
     }
 

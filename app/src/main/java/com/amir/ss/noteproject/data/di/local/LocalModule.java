@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject.data.di;
+package com.amir.ss.noteproject.data.di.local;
 
 import com.amir.ss.noteproject.MyApplication;
 import com.amir.ss.noteproject.data.db.DataBaseHelper;

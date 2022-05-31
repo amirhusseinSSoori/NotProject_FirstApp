@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject.data.di;
+package com.amir.ss.noteproject.data.di.local;
 
 import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSourceImp;
@@ -10,21 +10,21 @@ import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSourceImp;
 import com.amir.ss.noteproject.data.db.DataBaseHelper;
 
-public class DataSourceModule {
+public class DataSourceLocalModule {
 
-    public static ListNotesSource listNotesSourceInstance(DataBaseHelper dataBaseHelper) {
+    public ListNotesSource listNotesSourceInstance(DataBaseHelper dataBaseHelper) {
         return new ListNotesSourceImp(dataBaseHelper);
     }
 
-    public static DeleteNotesSource deleteNotesInstance(DataBaseHelper dataBaseHelper) {
+    public DeleteNotesSource deleteNotesInstance(DataBaseHelper dataBaseHelper) {
         return new DeleteNotesSourceImp(dataBaseHelper);
     }
 
-    public static InsertNotesSource insertNotesInstance(DataBaseHelper dataBaseHelper) {
+    public InsertNotesSource insertNotesInstance(DataBaseHelper dataBaseHelper) {
         return new InsertNotesSourceImp(dataBaseHelper);
     }
 
-    public static UpdateNotesSource updateNotesInstance(DataBaseHelper dataBaseHelper) {
+    public UpdateNotesSource updateNotesInstance(DataBaseHelper dataBaseHelper) {
         return new UpdateNotesSourceImp(dataBaseHelper);
     }
 }
