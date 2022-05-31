@@ -18,52 +18,17 @@ import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-
-    public void UpdateCategory(int CategoryId, String title, String detail) {
-        getWritableDatabase().execSQL(Category_UPDATE, new Object[]{title, detail, CategoryId});
-    }
-
     public DataBaseHelper(Context context) {
         super(context, "mydata_base", null, 1);
     }
-
-
-    public List<Category> getCategory() {
-        ArrayList<Category> categories = new ArrayList<>();
-        Cursor cursor = getReadableDatabase().rawQuery(CATEGORY_SELECT, null);
-        if (cursor.moveToFirst()) {
-            do {
-                Category category = new Category();
-                category.setCategoryId(cursor.getInt(0));
-                category.setTitle(cursor.getString(1));
-                category.setDetail(cursor.getString(2));
-                category.setDate(cursor.getString(3));
-                categories.add(category);
-
-            } while (cursor.moveToNext());
-            cursor.close();
-        }
-        return categories;
-
-    }
-
-//    public void add_Category(String title, String detail, String Date) {
-//        getWritableDatabase().execSQL(CATEGORY_INSERT, new Object[]{title, detail, Date});
-//    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CATEGORY_CREATE);
 
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-
-    public void deleteCategory(int CategoryId) {
-        getWritableDatabase().execSQL(Category_DELETE, new Object[]{CategoryId});
-    }
-
 }

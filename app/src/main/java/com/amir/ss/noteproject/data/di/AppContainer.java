@@ -1,6 +1,7 @@
 package com.amir.ss.noteproject.data.di;
 
-import com.amir.ss.noteproject.MyApplication;
+import static com.amir.ss.noteproject.data.di.LocalModule.provideDataBase;
+
 import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSourceImp;
 import com.amir.ss.noteproject.data.datasource.local.list.ListNotesSource;
@@ -9,19 +10,13 @@ import com.amir.ss.noteproject.data.datasource.local.remove.DeleteNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.remove.DeleteNotesSourceImp;
 import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSourceImp;
-import com.amir.ss.noteproject.data.db.DataBaseHelper;
-import com.amir.ss.noteproject.data.repository.insert.InsertNotesRepository;
-import com.amir.ss.noteproject.data.repository.list.ListNotesRepository;
-import com.amir.ss.noteproject.data.repository.remove.DeleteNotesRepository;
-import com.amir.ss.noteproject.data.repository.update.UpdateNotesRepository;
+import com.amir.ss.noteproject.data.repository.notes.insert.InsertNotesRepository;
+import com.amir.ss.noteproject.data.repository.notes.list.ListNotesRepository;
+import com.amir.ss.noteproject.data.repository.notes.remove.DeleteNotesRepository;
+import com.amir.ss.noteproject.data.repository.notes.update.UpdateNotesRepository;
 import com.amir.ss.noteproject.ui.MainViewModel;
 
 public class AppContainer {
-
-    private DataBaseHelper provideDataBase() {
-        return new DataBaseHelper(MyApplication.getAppContext());
-    }
-
 
     // for dataSource
     private InsertNotesSource provideInsertNoteSource() {
@@ -63,7 +58,6 @@ public class AppContainer {
     public MainViewModel ProvideMainVieModel() {
         return new MainViewModel(provideListNotesRepository(), provideInsertRepository(), provideDeleteRepository(),provideUpdateRepository());
     }
-
 
 
 }

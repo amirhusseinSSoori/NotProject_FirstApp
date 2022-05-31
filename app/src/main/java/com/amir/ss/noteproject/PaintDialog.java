@@ -113,8 +113,8 @@ public class PaintDialog extends DialogFragment {
         File path = Environment.getExternalStorageDirectory();
         File dir = new File(path + "/NoteBook/image");
         File[] files = dir.listFiles();
-        for (int i = 0; i < files.length; i++) {
 
+        for (int i = 0; i < files.length; i++) {
             File file = files[i];
             FileMode model = new FileMode();
             model.setDetail(file.getName());

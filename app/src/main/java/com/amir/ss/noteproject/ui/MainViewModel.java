@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.amir.ss.noteproject.Category;
-import com.amir.ss.noteproject.data.repository.insert.InsertNotesRepository;
-import com.amir.ss.noteproject.data.repository.list.ListNotesRepository;
-import com.amir.ss.noteproject.data.repository.remove.DeleteNotesRepository;
-import com.amir.ss.noteproject.data.repository.update.UpdateNotesRepository;
+import com.amir.ss.noteproject.data.repository.notes.insert.InsertNotesRepository;
+import com.amir.ss.noteproject.data.repository.notes.list.ListNotesRepository;
+import com.amir.ss.noteproject.data.repository.notes.remove.DeleteNotesRepository;
+import com.amir.ss.noteproject.data.repository.notes.update.UpdateNotesRepository;
 
 import java.util.ArrayList;
 

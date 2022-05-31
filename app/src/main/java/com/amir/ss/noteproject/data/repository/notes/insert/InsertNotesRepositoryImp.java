@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject.data.repository.insert;
+package com.amir.ss.noteproject.data.repository.notes.insert;
 
 import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSource;
 

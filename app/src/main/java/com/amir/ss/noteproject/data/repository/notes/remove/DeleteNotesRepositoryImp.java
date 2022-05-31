@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject.data.repository.remove;
+package com.amir.ss.noteproject.data.repository.notes.remove;
 
 import com.amir.ss.noteproject.data.datasource.local.remove.DeleteNotesSource;
 

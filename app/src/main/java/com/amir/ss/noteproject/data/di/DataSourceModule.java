@@ -12,39 +12,19 @@ import com.amir.ss.noteproject.data.db.DataBaseHelper;
 
 public class DataSourceModule {
 
-    private static ListNotesSourceImp listNotesSourceImp;
-    private static DeleteNotesSourceImp deleteNotesSourceImp;
-    private static InsertNotesSourceImp insertNotesSourceImp;
-    private static UpdateNotesSourceImp updateNotesSourceImp;
-
-
     public static ListNotesSource listNotesSourceInstance(DataBaseHelper dataBaseHelper) {
-        if (listNotesSourceImp == null) {
-            listNotesSourceImp = new ListNotesSourceImp(dataBaseHelper);
-        }
-        return listNotesSourceImp;
+        return new ListNotesSourceImp(dataBaseHelper);
     }
-
 
     public static DeleteNotesSource deleteNotesInstance(DataBaseHelper dataBaseHelper) {
-        if (deleteNotesSourceImp == null) {
-            deleteNotesSourceImp = new DeleteNotesSourceImp(dataBaseHelper);
-        }
-        return deleteNotesSourceImp;
+        return new DeleteNotesSourceImp(dataBaseHelper);
     }
 
-
     public static InsertNotesSource insertNotesInstance(DataBaseHelper dataBaseHelper) {
-        if (insertNotesSourceImp == null) {
-            insertNotesSourceImp = new InsertNotesSourceImp(dataBaseHelper);
-        }
-        return insertNotesSourceImp;
+        return new InsertNotesSourceImp(dataBaseHelper);
     }
 
     public static UpdateNotesSource updateNotesInstance(DataBaseHelper dataBaseHelper) {
-        if (updateNotesSourceImp == null) {
-            updateNotesSourceImp = new UpdateNotesSourceImp(dataBaseHelper);
-        }
-        return updateNotesSourceImp;
+        return new UpdateNotesSourceImp(dataBaseHelper);
     }
 }

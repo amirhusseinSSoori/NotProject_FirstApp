@@ -40,10 +40,7 @@ public class DeleteDialog extends DialogFragment {
         ((Button) miv.findViewById(R.id.diloge_delete)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DataBaseHelper(_Context).deleteCategory(getId);
-//                MyAdapter adapter = new MyAdapter(dataBaseHelper.getCategory(), _Context, getFragmentManager(), mRecyclerView);
-//                mRecyclerView.setAdapter(adapter);
-//                adapter.notifyDataSetChanged();
+
                 dismiss();
             }
         });
