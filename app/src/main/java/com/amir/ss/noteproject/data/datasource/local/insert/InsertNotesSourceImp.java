@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject.data.datasource.insert;
+package com.amir.ss.noteproject.data.datasource.local.insert;
 
 import static com.amir.ss.noteproject.data.db.Query.CATEGORY_INSERT;
 

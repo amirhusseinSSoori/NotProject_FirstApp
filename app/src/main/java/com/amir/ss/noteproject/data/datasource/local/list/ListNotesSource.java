@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject.data.datasource.list;
+package com.amir.ss.noteproject.data.datasource.local.list;
 
 import androidx.lifecycle.LiveData;
 

@@ -11,10 +11,6 @@ import android.widget.GridView;
 
 public class RemovingDialog extends DialogFragment {
 
-    DrawsAdapter adapter;
-    GridView gridView;
-    String name;
-
     RemoveContract removeContract;
 
 
@@ -52,7 +48,7 @@ public class RemovingDialog extends DialogFragment {
     }
 
 
-    interface RemoveContract {
+    public interface RemoveContract {
         void removeItem();
     }
 }

@@ -13,10 +13,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.amir.ss.noteproject.data.db.DataBaseHelper;
+
+import com.amir.ss.noteproject.data.di.AppContainer;
+import com.amir.ss.noteproject.ui.MainViewModel;
 
 public class DetailActivity extends AppCompatActivity {
-
 
     EditText edit_title;
     EditText edit_detail;
@@ -24,6 +25,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView text_detail;
     Category category;
     LinearLayout layout;
+    MainViewModel viewModel;
 
     private androidx.appcompat.widget.Toolbar toolbar;
 
@@ -32,7 +34,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
+        viewModel = new AppContainer().ProvideMainVieModel();
         layout = (LinearLayout) findViewById(R.id.line_fure);
         customType(DetailActivity.this, "left-to-right");
 
@@ -74,7 +76,7 @@ public class DetailActivity extends AppCompatActivity {
                 break;
 
             case android.R.id.home:
-                new DataBaseHelper(this).UpdateCategory(category.getCategoryId(), edit_title.getText().toString(), edit_detail.getText().toString());
+                viewModel.updateToNotes(category.getCategoryId(),edit_title.getText().toString(),edit_detail.getText().toString());
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("TabNumber", "0");
                 startActivity(intent);
@@ -92,7 +94,7 @@ public class DetailActivity extends AppCompatActivity {
             edit_detail.setVisibility(View.VISIBLE);
             txt_title.setVisibility((View.GONE));
             text_detail.setVisibility((View.GONE));
-            new DataBaseHelper(this).UpdateCategory(category.getCategoryId(), edit_title.getText().toString(), edit_detail.getText().toString());
+            viewModel.updateToNotes(category.getCategoryId(),edit_title.getText().toString(),edit_detail.getText().toString());
             txt_title.setText(edit_title.getText().toString());
             text_detail.setText(edit_detail.getText().toString());
 
@@ -103,7 +105,7 @@ public class DetailActivity extends AppCompatActivity {
             text_detail.setVisibility((View.VISIBLE));
             txt_title.setText(edit_title.getText().toString());
             text_detail.setText(edit_detail.getText().toString());
-            new DataBaseHelper(this).UpdateCategory(category.getCategoryId(), txt_title.getText().toString(), text_detail.getText().toString());
+            viewModel.updateToNotes(category.getCategoryId(),edit_title.getText().toString(),edit_detail.getText().toString());
         }
 
     }
@@ -111,7 +113,7 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        new DataBaseHelper(this).UpdateCategory(category.getCategoryId(), edit_title.getText().toString(), edit_detail.getText().toString());
+        viewModel.updateToNotes(category.getCategoryId(),edit_title.getText().toString(),edit_detail.getText().toString());
         startActivity(new Intent(DetailActivity.this, MainActivity.class));
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("TabNumber", "0");

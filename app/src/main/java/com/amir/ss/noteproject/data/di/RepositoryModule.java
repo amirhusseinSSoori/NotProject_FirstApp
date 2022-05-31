@@ -1,35 +1,38 @@
 package com.amir.ss.noteproject.data.di;
 
-import com.amir.ss.noteproject.data.datasource.insert.InsertNotesSourceImp;
-import com.amir.ss.noteproject.data.datasource.list.ListNotesSourceImp;
-import com.amir.ss.noteproject.data.datasource.remove.DeleteNotesSourceImp;
-import com.amir.ss.noteproject.data.repository.insert.InsertRepository;
-import com.amir.ss.noteproject.data.repository.insert.InsertRepositoryImp;
+import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSourceImp;
+import com.amir.ss.noteproject.data.datasource.local.list.ListNotesSourceImp;
+import com.amir.ss.noteproject.data.datasource.local.remove.DeleteNotesSourceImp;
+import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSourceImp;
+import com.amir.ss.noteproject.data.repository.insert.InsertNotesRepositoryImp;
 import com.amir.ss.noteproject.data.repository.list.ListNotesRepository;
 import com.amir.ss.noteproject.data.repository.list.ListNotesRepositoryImp;
-import com.amir.ss.noteproject.data.repository.remove.DeleteRepository;
-import com.amir.ss.noteproject.data.repository.remove.DeleteRepositoryImp;
+import com.amir.ss.noteproject.data.repository.remove.DeleteNotesRepository;
+import com.amir.ss.noteproject.data.repository.remove.DeleteNotesRepositoryImp;
+import com.amir.ss.noteproject.data.repository.update.UpdateNotesRepository;
+import com.amir.ss.noteproject.data.repository.update.UpdateNotesRepositoryImp;
 
 public class RepositoryModule {
 
-    private static InsertRepositoryImp insertRepositoryImp;
-    private static DeleteRepositoryImp deleteRepositoryImp;
+    private static InsertNotesRepositoryImp insertRepositoryImp;
+    private static DeleteNotesRepositoryImp deleteRepositoryImp;
     private static ListNotesRepositoryImp listNotesRepositoryImp;
+    private static UpdateNotesRepositoryImp updateNotesRepositoryImp;
 
 
 
 
-    public static InsertRepositoryImp insertRepositoryInstance(InsertNotesSourceImp insertNotesSourceImp) {
+    public static InsertNotesRepositoryImp insertRepositoryInstance(InsertNotesSourceImp insertNotesSourceImp) {
         if (insertRepositoryImp == null) {
-            insertRepositoryImp = new InsertRepositoryImp(insertNotesSourceImp);
+            insertRepositoryImp = new InsertNotesRepositoryImp(insertNotesSourceImp);
         }
         return insertRepositoryImp;
     }
 
 
-    public static DeleteRepository deleteRepositoryInstance(DeleteNotesSourceImp deleteNotesSourceImp) {
+    public static DeleteNotesRepository deleteRepositoryInstance(DeleteNotesSourceImp deleteNotesSourceImp) {
         if (deleteRepositoryImp == null) {
-            deleteRepositoryImp = new DeleteRepositoryImp(deleteNotesSourceImp);
+            deleteRepositoryImp = new DeleteNotesRepositoryImp(deleteNotesSourceImp);
         }
         return deleteRepositoryImp;
     }
@@ -39,6 +42,13 @@ public class RepositoryModule {
             listNotesRepositoryImp = new ListNotesRepositoryImp(listNotesSourceImp);
         }
         return listNotesRepositoryImp;
+    }
+
+    public static UpdateNotesRepository updateNotesRepositoryInstance(UpdateNotesSourceImp updateNotesSourceImp){
+        if(updateNotesRepositoryImp == null){
+            updateNotesRepositoryImp = new UpdateNotesRepositoryImp(updateNotesSourceImp);
+        }
+        return updateNotesRepositoryImp;
     }
 
 }

@@ -19,8 +19,8 @@ import java.util.List;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
 
-    public void UpdateCategory(int Categoryid, String titel, String detail) {
-        getWritableDatabase().execSQL(Category_UPDATE, new Object[]{titel, detail, Categoryid});
+    public void UpdateCategory(int CategoryId, String title, String detail) {
+        getWritableDatabase().execSQL(Category_UPDATE, new Object[]{title, detail, CategoryId});
     }
 
     public DataBaseHelper(Context context) {
@@ -47,9 +47,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void add_Category(String title, String detail, String Date) {
-        getWritableDatabase().execSQL(CATEGORY_INSERT, new Object[]{title, detail, Date});
-    }
+//    public void add_Category(String title, String detail, String Date) {
+//        getWritableDatabase().execSQL(CATEGORY_INSERT, new Object[]{title, detail, Date});
+//    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {

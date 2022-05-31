@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject.data.datasource.remove;
+package com.amir.ss.noteproject.data.datasource.local.remove;
 
 import static com.amir.ss.noteproject.data.db.Query.Category_DELETE;
 

@@ -1,5 +1,5 @@
 package com.amir.ss.noteproject.data.repository.remove;
 
-public interface DeleteRepository {
+public interface DeleteNotesRepository {
     void deleteToNotes(int CategoryId);
 }

@@ -41,9 +41,9 @@ public class DeleteDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 new DataBaseHelper(_Context).deleteCategory(getId);
-                MyAdapter adapter = new MyAdapter(dataBaseHelper.getCategory(), _Context, dataBaseHelper, getFragmentManager(), mRecyclerView);
-                mRecyclerView.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+//                MyAdapter adapter = new MyAdapter(dataBaseHelper.getCategory(), _Context, getFragmentManager(), mRecyclerView);
+//                mRecyclerView.setAdapter(adapter);
+//                adapter.notifyDataSetChanged();
                 dismiss();
             }
         });

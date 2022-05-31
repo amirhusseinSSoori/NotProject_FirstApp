@@ -1,12 +1,12 @@
 package com.amir.ss.noteproject.data.repository.insert;
 
-import com.amir.ss.noteproject.data.datasource.insert.InsertNotesSource;
+import com.amir.ss.noteproject.data.datasource.local.insert.InsertNotesSource;
 
-public class InsertRepositoryImp implements InsertRepository {
+public class InsertNotesRepositoryImp implements InsertNotesRepository {
 
     InsertNotesSource insertNotesSource;
 
-    public InsertRepositoryImp(InsertNotesSource insertNotesSource){
+    public InsertNotesRepositoryImp(InsertNotesSource insertNotesSource){
         this.insertNotesSource = insertNotesSource;
     }
 
