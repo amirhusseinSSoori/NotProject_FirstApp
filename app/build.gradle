@@ -49,5 +49,9 @@ dependencies {
     def lifecycle_version = "2.4.1"
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
 
+
+    def fragment_version = "1.4.1"
+    implementation "androidx.fragment:fragment:$fragment_version"
+
   
 }
