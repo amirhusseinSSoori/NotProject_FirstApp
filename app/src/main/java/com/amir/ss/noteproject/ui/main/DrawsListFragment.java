@@ -1,8 +1,12 @@
 package com.amir.ss.noteproject.ui.main;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +24,7 @@ import com.amir.ss.noteproject.PaintDialog;
 import com.amir.ss.noteproject.R;
 
 import java.io.File;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -106,7 +111,7 @@ public class DrawsListFragment extends Fragment {
     public ArrayList<FileMode> readList() throws Exception {
         ArrayList<FileMode> myModel = new ArrayList<>();
         File path = Environment.getExternalStorageDirectory();
-        File dir = new File(path + "/NoteBook/image");
+        File dir = new File(path + "/NoteBook");
         File[] files = dir.listFiles();
 
         for (int i = 0; i < files.length; i++) {
