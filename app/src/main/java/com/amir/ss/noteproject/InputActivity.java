@@ -3,7 +3,12 @@ package com.amir.ss.noteproject;
 import static maes.tech.intentanim.CustomIntent.customType;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.media.ExifInterface;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.amir.ss.noteproject.data.di.AppContainer;
 import com.amir.ss.noteproject.ui.MainViewModel;
 
+import java.io.File;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class InputActivity extends AppCompatActivity {
@@ -67,6 +75,5 @@ public class InputActivity extends AppCompatActivity {
         String data = ((EditText) findViewById(R.id.input_Detail)).getText().toString();
         return data;
     }
-
 
 }
