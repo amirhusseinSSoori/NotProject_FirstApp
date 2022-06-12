@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder> {
-    List<FileMode> LIST;
+    List<ContentModel> LIST;
     Context _Context;
     private LayoutInflater mInflater;
 
 
-    public DrawsAdapter(Context context, ArrayList<FileMode> mydata) {
+    public DrawsAdapter(Context context, List<ContentModel> mydata) {
         this.mInflater = LayoutInflater.from(context);
         _Context = context;
         this.LIST = mydata;
@@ -41,8 +42,8 @@ public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Glide.with(_Context).load(LIST.get(position).getUri()).into(holder.imageDelete);
-        holder.myTextView.setText(LIST.get(position).getDetail());
+        Glide.with(_Context).load(LIST.get(position).getContentUris()).into(holder.imageDelete);
+        holder.myTextView.setText(LIST.get(position).getDisplayName());
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,11 +51,12 @@ public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder
                     RemovingDialog paint = new RemovingDialog();
                     paint.show(((Activity) _Context).getFragmentManager(), "");
                     paint.setOnRemoveListener(() -> {
-                        File path = Environment.getExternalStorageDirectory();
-                        File dir = new File(path + "/NoteBook/image/");
-                        dir.mkdirs();
-                        File file = new File(dir, LIST.get(position).getDetail());
-                        file.delete();
+//                        String imagesDir = Environment.getExternalStoragePublicDirectory(
+//                                Environment.DIRECTORY_DCIM).toString() + File.separator + "DCIM/NoteBook";
+//                        _Context.deleteFile( imagesDir);
+//                        File file = new File(imagesDir);
+//                        if(file.exists());
+//                        file.delete();
                     });
 
                 } catch (Exception e) {
