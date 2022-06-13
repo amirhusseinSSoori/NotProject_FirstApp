@@ -2,7 +2,7 @@ package com.amir.ss.noteproject.data.repository.notes.list;
 
 import androidx.lifecycle.LiveData;
 
-import com.amir.ss.noteproject.Category;
+import com.amir.ss.noteproject.data.model.Category;
 import com.amir.ss.noteproject.data.datasource.local.list.ListNotesSource;
 
 import java.util.ArrayList;

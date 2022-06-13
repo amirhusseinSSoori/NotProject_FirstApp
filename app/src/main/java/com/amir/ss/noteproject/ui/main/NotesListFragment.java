@@ -13,11 +13,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amir.ss.noteproject.NotesAdapter;
+import com.amir.ss.noteproject.ui.adapter.NotesAdapter;
 import com.amir.ss.noteproject.R;
-import com.amir.ss.noteproject.RemovingDialog;
+import com.amir.ss.noteproject.ui.dialog.RemovingDialog;
 import com.amir.ss.noteproject.data.di.AppContainer;
-import com.amir.ss.noteproject.ui.MainViewModel;
+import com.amir.ss.noteproject.ui.viewmodel.NotesViewModel;
 import com.amir.ss.noteproject.ui.input.InputFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,7 +30,7 @@ public class NotesListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private NotesAdapter adapter;
     private View view;
-    private MainViewModel mainViewModel;
+    private NotesViewModel mainViewModel;
 
 
     @Override

@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="vertical">
-            <com.amir.ss.noteproject.LineEditText
+            <com.amir.ss.noteproject.ui.widget.LineEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom"
@@ -73,7 +73,7 @@
                 android:textSize="20dp"
                 android:textColorHint="#ae8888"
                 android:hint="Enter Something"/>
-            <com.amir.ss.noteproject.LineTextView
+            <com.amir.ss.noteproject.ui.widget.LineTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom"

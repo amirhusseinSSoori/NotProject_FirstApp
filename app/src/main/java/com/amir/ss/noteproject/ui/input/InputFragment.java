@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.amir.ss.noteproject.R;
 import com.amir.ss.noteproject.data.di.AppContainer;
-import com.amir.ss.noteproject.ui.MainViewModel;
+import com.amir.ss.noteproject.ui.viewmodel.NotesViewModel;
 import com.amir.ss.noteproject.ui.main.MainFragment;
 
 import java.text.SimpleDateFormat;
@@ -27,7 +27,7 @@ public class InputFragment extends Fragment {
     EditText edit_title;
     EditText edit_description;
     String date;
-    MainViewModel mainViewModel;
+    NotesViewModel mainViewModel;
     OnBackPressedCallback callback;
     FragmentManager fm;
 

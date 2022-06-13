@@ -7,7 +7,7 @@ import android.database.Cursor;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.amir.ss.noteproject.Category;
+import com.amir.ss.noteproject.data.model.Category;
 import com.amir.ss.noteproject.data.db.DataBaseHelper;
 
 import java.util.ArrayList;

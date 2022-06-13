@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject;
+package com.amir.ss.noteproject.ui.dialog;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amir.ss.noteproject.R;
 import com.amir.ss.noteproject.data.db.DataBaseHelper;
 
 

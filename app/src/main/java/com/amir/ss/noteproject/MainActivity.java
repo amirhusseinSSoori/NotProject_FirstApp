@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initialFragmentContainer(){
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, MainFragment.class, null)
@@ -39,20 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public ArrayList<FileMode> readList() {
-        ArrayList<FileMode> myModel = new ArrayList<>();
-        File path = Environment.getExternalStorageDirectory();
-        File dir = new File(path + "/NoteBook/image");
-        File[] files = dir.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            File file = files[i];
-            FileMode model = new FileMode();
-            model.setDetail(file.getName());
-            model.setUri(Uri.fromFile(file));
-            myModel.add(model);
-        }
-        return myModel;
-    }
+
 
 
 }

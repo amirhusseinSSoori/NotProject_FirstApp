@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject;
+package com.amir.ss.noteproject.data.model;
 
 import android.net.Uri;
 

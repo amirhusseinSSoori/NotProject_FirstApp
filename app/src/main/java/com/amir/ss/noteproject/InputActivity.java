@@ -9,7 +9,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amir.ss.noteproject.data.di.AppContainer;
-import com.amir.ss.noteproject.ui.MainViewModel;
+import com.amir.ss.noteproject.ui.viewmodel.NotesViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +20,7 @@ public class InputActivity extends AppCompatActivity {
     EditText edit_description;
     String date;
 
-    MainViewModel mainViewModel;
+    NotesViewModel mainViewModel;
 
 
     @Override
@@ -39,7 +39,6 @@ public class InputActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (edit_title.getText().length() == 0) {
-
             mainViewModel.insertToNotes("noTitle", detail(), date);
             Intent intent = new Intent(InputActivity.this, MainActivity.class);
             intent.putExtra("TabNumber", "0");
@@ -53,8 +52,6 @@ public class InputActivity extends AppCompatActivity {
             finish();
 
         }
-
-
     }
 
 

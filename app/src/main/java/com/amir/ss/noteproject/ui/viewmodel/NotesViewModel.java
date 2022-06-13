@@ -1,10 +1,10 @@
-package com.amir.ss.noteproject.ui;
+package com.amir.ss.noteproject.ui.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.amir.ss.noteproject.Category;
+import com.amir.ss.noteproject.data.model.Category;
 import com.amir.ss.noteproject.data.repository.notes.insert.InsertNotesRepository;
 import com.amir.ss.noteproject.data.repository.notes.list.ListNotesRepository;
 import com.amir.ss.noteproject.data.repository.notes.remove.DeleteNotesRepository;
@@ -12,7 +12,7 @@ import com.amir.ss.noteproject.data.repository.notes.update.UpdateNotesRepositor
 
 import java.util.ArrayList;
 
-public class MainViewModel extends ViewModel {
+public class NotesViewModel extends ViewModel {
 
     ListNotesRepository listNotesRepository;
     InsertNotesRepository insertRepository;
@@ -23,7 +23,7 @@ public class MainViewModel extends ViewModel {
     public LiveData<ArrayList<Category>> _resultList = resultList;
 
 
-    public MainViewModel(ListNotesRepository listNotesRepository, InsertNotesRepository insertRepository, DeleteNotesRepository deleteRepository, UpdateNotesRepository updateNotesRepository) {
+    public NotesViewModel(ListNotesRepository listNotesRepository, InsertNotesRepository insertRepository, DeleteNotesRepository deleteRepository, UpdateNotesRepository updateNotesRepository) {
         this.listNotesRepository = listNotesRepository;
         this.insertRepository = insertRepository;
         this.deleteRepository = deleteRepository;

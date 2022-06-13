@@ -1,19 +1,22 @@
-package com.amir.ss.noteproject;
+package com.amir.ss.noteproject.ui.dialog;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-import com.amir.ss.noteproject.data.datasource.file.FileSystem;
+import com.amir.ss.noteproject.ui.adapter.DrawsAdapter;
+import com.amir.ss.noteproject.R;
 
 import net.appitiza.android.drawingpad.drawpad.views.DrawingView;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,11 +27,15 @@ public class PaintDialog extends DialogFragment {
     DrawingView drawingView;
     String date;
 
+    AddImageContract addImageContract;
+
 
     public PaintDialog(DrawsAdapter imageAdapter) {
         this.imageAdapter = imageAdapter;
     }
-
+    public void AddImageContractListener( AddImageContract addImageContract) {
+        this.addImageContract = addImageContract;
+    }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -46,8 +53,8 @@ public class PaintDialog extends DialogFragment {
                 SimpleDateFormat sdf = (SimpleDateFormat) new SimpleDateFormat("MMM MM, dd, yyyy h:mm a").getDateTimeInstance();
                 date = sdf.format(new Date());
                 try {
-                    new FileSystem().saveImage(drawingView.getSignatureBitmap(), date, getActivity());
-                    imageAdapter.notifyDataSetChanged();
+//                    new FileSystem().saveImage(drawingView.getSignatureBitmap(), date, getActivity());
+                    addImageContract.addItem(drawingView.getSignatureBitmap());
                 } catch (Exception ex) {
 
                 }
@@ -67,6 +74,8 @@ public class PaintDialog extends DialogFragment {
         builder.setView(miv);
         return builder.create();
     }
-
+    public interface AddImageContract {
+        void addItem(Bitmap bitmap) throws IOException;
+    }
 
 }

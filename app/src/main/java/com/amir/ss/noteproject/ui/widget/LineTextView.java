@@ -1,17 +1,18 @@
-package com.amir.ss.noteproject;
+package com.amir.ss.noteproject.ui.widget;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.widget.EditText;
+import android.widget.TextView;
 
-public class LineEditText extends EditText {
+public class LineTextView extends TextView {
     private Rect mRect;
     private Paint mPaint;
 
-    public LineEditText(Context context, AttributeSet attrs) {
+    public LineTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         mRect = new Rect();
@@ -46,4 +47,5 @@ public class LineEditText extends EditText {
         }
         super.onDraw(canvas);
     }
+
 }

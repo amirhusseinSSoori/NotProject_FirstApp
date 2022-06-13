@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject;
+package com.amir.ss.noteproject.data.model;
 
 import java.io.Serializable;
 
@@ -9,10 +9,6 @@ public class Category implements Serializable {
     private String Title;
     private String Date;
     private String Detail;
-
-    public Category() {
-
-    }
 
     public int getCategoryId() {
         return CategoryId;
@@ -44,10 +40,5 @@ public class Category implements Serializable {
 
     public void setDetail(String detail) {
         Detail = detail;
-    }
-
-    public Category(String titel, String date) {
-        setTitle(titel);
-        setDate(date);
     }
 }

@@ -15,7 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.amir.ss.noteproject.data.di.AppContainer;
-import com.amir.ss.noteproject.ui.MainViewModel;
+import com.amir.ss.noteproject.data.model.Category;
+import com.amir.ss.noteproject.ui.viewmodel.NotesViewModel;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView text_detail;
     Category category;
     LinearLayout layout;
-    MainViewModel viewModel;
+    NotesViewModel viewModel;
 
     private androidx.appcompat.widget.Toolbar toolbar;
 

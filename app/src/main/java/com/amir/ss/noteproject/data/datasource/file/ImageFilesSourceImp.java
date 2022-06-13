@@ -1,27 +1,24 @@
 package com.amir.ss.noteproject.data.datasource.file;
 
-import android.content.ContentResolver;
 import android.content.ContentUris;
-import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.MediaStore;
 
-import com.amir.ss.noteproject.ContentModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import com.amir.ss.noteproject.data.model.ContentModel;
+import com.amir.ss.noteproject.MyApplication;
+
 import java.util.ArrayList;
-import java.util.List;
 
-public class FileSystem {
-    public List<ContentModel> loadImage(Context context) {
+public class ImageFilesSourceImp implements ImageFileSource {
+
+    @Override
+    public LiveData<ArrayList<ContentModel>> loadImage() {
+        MutableLiveData<ArrayList<ContentModel>> resultList = new MutableLiveData<ArrayList<ContentModel>>();
         Uri collection;
         ArrayList<ContentModel> list = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -42,7 +39,7 @@ public class FileSystem {
                 "%DCIM/NoteBook%"
         };
         String sortOrder = MediaStore.MediaColumns.DATE_ADDED + " COLLATE NOCASE DESC";
-        try (Cursor cursor = context.getContentResolver().query(
+        try (Cursor cursor = MyApplication.getAppContext().getContentResolver().query(
                 collection,
                 projection,
                 selection,
@@ -61,36 +58,12 @@ public class FileSystem {
                 int width = cursor.getInt(widthPathColumn);
                 Uri contentUri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id);
                 list.add(new ContentModel(id, displayName, contentUri, relativePath, width));
+
+                resultList.postValue(list);
             }
         }
-        return list;
-    }
 
 
-    public void saveImage(Bitmap bitmap, String name, Context context) throws IOException {
-        OutputStream fos;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            ContentResolver resolver = context.getContentResolver();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, name);
-            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/png");
-            contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, "DCIM/NoteBook");
-            Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-            fos = resolver.openOutputStream(imageUri);
-        } else {
-            String imagesDir = Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DCIM).toString() + File.separator + "DCIM/NoteBook";
-            File file = new File(imagesDir);
-
-            if (!file.exists()) {
-                file.mkdir();
-            }
-            File image = new File(imagesDir, name + ".png");
-            fos = new FileOutputStream(image);
-
-        }
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-        fos.flush();
-        fos.close();
+        return resultList;
     }
 }

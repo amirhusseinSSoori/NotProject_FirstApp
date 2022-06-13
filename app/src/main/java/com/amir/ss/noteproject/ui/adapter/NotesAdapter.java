@@ -1,4 +1,4 @@
-package com.amir.ss.noteproject;
+package com.amir.ss.noteproject.ui.adapter;
 
 
 import android.content.Context;
@@ -17,6 +17,11 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.amir.ss.noteproject.DetailActivity;
+import com.amir.ss.noteproject.MainActivity;
+import com.amir.ss.noteproject.R;
+import com.amir.ss.noteproject.data.model.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
