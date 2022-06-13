@@ -3,7 +3,6 @@ package com.amir.ss.noteproject.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +22,6 @@ import com.amir.ss.noteproject.MainActivity;
 import com.amir.ss.noteproject.R;
 import com.amir.ss.noteproject.data.model.Category;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 
@@ -80,17 +76,16 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         private ImageButton pic_delete;
         private ImageButton pic_edit;
         public CardView card1;
-
         public LinearLayout linearLayout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            card1 = (CardView) itemView.findViewById(R.id.card_one);
-            tx_data = (TextView) itemView.findViewById(R.id.txt_data);
-            tx_name = (TextView) itemView.findViewById(R.id.txt_name);
-            pic_delete = (ImageButton) itemView.findViewById(R.id.bin_btn);
-            pic_edit = (ImageButton) itemView.findViewById(R.id.download_folder_btn);
-            linearLayout = (LinearLayout) itemView.findViewById(R.id.line_click);
+            card1 = itemView.findViewById(R.id.card_one);
+            tx_data = itemView.findViewById(R.id.txt_data);
+            tx_name = itemView.findViewById(R.id.txt_name);
+            pic_delete = itemView.findViewById(R.id.bin_btn);
+            pic_edit = itemView.findViewById(R.id.download_folder_btn);
+            linearLayout = itemView.findViewById(R.id.line_click);
         }
 
         public void fetchData(int position) {
@@ -117,36 +112,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             pic_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    write(diffResult.getCurrentList().get(position).getTitle() + ".txt", diffResult.getCurrentList().get(position).getDetail());
+
                     Toast.makeText(_Context, "this note save in storage", Toast.LENGTH_SHORT).show();
                 }
             });
 
         }
-    }
-
-    public void write(String title, String detail) {
-        String rootPath = Environment.getExternalStorageDirectory()
-                .getAbsolutePath() + "/NoteBook/";
-        File root = new File(rootPath);
-        if (!root.exists()) {
-            root.mkdirs();
-        }
-        File f = new File(rootPath + title);
-        if (f.exists()) {
-            f.delete();
-        }
-        try {
-            f.createNewFile();
-            FileOutputStream out = new FileOutputStream(f);
-            out.write(detail.getBytes());
-            out.flush();
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
 

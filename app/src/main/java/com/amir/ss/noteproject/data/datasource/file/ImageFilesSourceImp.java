@@ -9,8 +9,8 @@ import android.provider.MediaStore;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.amir.ss.noteproject.data.model.ContentModel;
 import com.amir.ss.noteproject.MyApplication;
+import com.amir.ss.noteproject.data.model.ContentModel;
 
 import java.util.ArrayList;
 
@@ -52,12 +52,18 @@ public class ImageFilesSourceImp implements ImageFileSource {
             int widthPathColumn = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.WIDTH);
 
             while (cursor.moveToNext()) {
-                Long id = cursor.getLong(idColumn);
+                int id = cursor.getInt(idColumn);
                 String displayName = cursor.getString(displayNameColumn);
                 String relativePath = cursor.getString(relativePathColumn);
                 int width = cursor.getInt(widthPathColumn);
                 Uri contentUri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id);
-                list.add(new ContentModel(id, displayName, contentUri, relativePath, width));
+                ContentModel contentModel = new ContentModel();
+                contentModel.setContentUris(contentUri);
+                contentModel.setDisplayName(displayName);
+                contentModel.setWidth(width);
+                contentModel.setId(id);
+                contentModel.setRelativePath(relativePath);
+                list.add(contentModel);
 
                 resultList.postValue(list);
             }

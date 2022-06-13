@@ -1,7 +1,10 @@
 package com.amir.ss.noteproject.ui.main;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amir.ss.noteproject.ui.adapter.DrawsAdapter;
+import com.amir.ss.noteproject.ui.dialog.DeleteDialog;
 import com.amir.ss.noteproject.ui.dialog.PaintDialog;
 import com.amir.ss.noteproject.R;
 import com.amir.ss.noteproject.data.di.AppContainer;
+import com.amir.ss.noteproject.ui.dialog.RemovingDialog;
 import com.amir.ss.noteproject.ui.viewmodel.DrawsViewModel;
 
 import java.io.IOException;
@@ -36,7 +41,7 @@ public class DrawsListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adapter = new DrawsAdapter();
+
         drawsViewModel = new AppContainer().ProvideDrawsViewModel();
     }
 
@@ -45,6 +50,7 @@ public class DrawsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_painting_list, container, false);
         gridList = (RecyclerView) view.findViewById(R.id.grid_painting_list);
+        adapter = new DrawsAdapter();
         showDialog = (ImageButton) view.findViewById(R.id.btn_add_draw);
         return view;
     }
@@ -55,7 +61,7 @@ public class DrawsListFragment extends Fragment {
         SimpleDateFormat sdf = (SimpleDateFormat) new SimpleDateFormat("MMM MM, dd, yyyy h:mm a").getDateTimeInstance();
         date = sdf.format(new Date());
 
-
+        showAllList();
         showDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,17 +76,27 @@ public class DrawsListFragment extends Fragment {
                 });
             }
         });
+        gridList.setAdapter(adapter);
+        adapter.setOnContractor(new DrawsAdapter.ContractWithDialog() {
+                                    @Override
+                                    public void deleteItem(Uri uri, int id) {
+                                        drawsViewModel.deleteFile(uri, id);
+                                        drawsViewModel.showAllImages();
+                                    }
+                                }
+
+        );
 
 
-        showAllList();
     }
 
     private void showAllList() {
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+
         drawsViewModel._resultList.observe(getViewLifecycleOwner(), observe -> {
-            gridList.setAdapter(adapter);
+
             adapter.submitList(observe);
-            gridList.setLayoutManager(layoutManager);
+            drawsViewModel.showAllImages();
+
         });
 
     }

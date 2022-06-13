@@ -5,43 +5,38 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.amir.ss.noteproject.R;
-import com.amir.ss.noteproject.data.db.DataBaseHelper;
+import com.amir.ss.noteproject.ui.adapter.DrawsAdapter;
 
 
 @SuppressLint("ValidFragment")
 public class DeleteDialog extends DialogFragment {
-    int getId;
+    Uri uri;
     Context _Context;
-    DataBaseHelper dataBaseHelper;
-    RecyclerView mRecyclerView;
+    RemoveContract removeContract;
 
-    public DeleteDialog(int id, Context context, DataBaseHelper helper, RecyclerView recyclerView) {
-        getId = id;
+    public DeleteDialog(Uri uri, Context context) {
+        this.uri = uri;
         _Context = context;
-        dataBaseHelper = helper;
-        mRecyclerView = recyclerView;
     }
 
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View miv = inflater.inflate(R.layout.dilog_for_delete, null);
 
         ((Button) miv.findViewById(R.id.diloge_delete)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                removeContract.removeItem(uri);
                 dismiss();
             }
         });
@@ -55,5 +50,7 @@ public class DeleteDialog extends DialogFragment {
         return builder.create();
     }
 
-
+    public interface RemoveContract {
+        void removeItem(Uri uri);
+    }
 }

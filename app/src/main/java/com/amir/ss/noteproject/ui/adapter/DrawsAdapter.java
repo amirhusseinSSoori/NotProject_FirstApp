@@ -1,8 +1,8 @@
 package com.amir.ss.noteproject.ui.adapter;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.amir.ss.noteproject.R;
 import com.amir.ss.noteproject.data.model.ContentModel;
-import com.amir.ss.noteproject.ui.dialog.RemovingDialog;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -25,24 +23,27 @@ import java.util.List;
 public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder> {
 
     Context _Context;
-
-
+    ContractWithDialog contractor;
+    public void setOnContractor(ContractWithDialog contractor) {
+        this.contractor = contractor;
+    }
     public void submitList(List<ContentModel> list) {
         diffResult.submitList(list);
     }
 
-    AsyncListDiffer<ContentModel> diffResult = new AsyncListDiffer<ContentModel>(this,
+    AsyncListDiffer<ContentModel> diffResult = new AsyncListDiffer<>(this,
             new DiffUtil.ItemCallback<ContentModel>() {
                 @Override
                 public boolean areItemsTheSame(@NonNull ContentModel oldItem, @NonNull ContentModel newItem) {
                     return oldItem.getId() == newItem.getId();
                 }
 
-                @SuppressLint("DiffUtilEquals")
                 @Override
                 public boolean areContentsTheSame(@NonNull ContentModel oldItem, @NonNull ContentModel newItem) {
                     return oldItem.getId() == newItem.getId();
                 }
+
+
             });
 
 
@@ -51,7 +52,7 @@ public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder
     public DrawsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.draw_items, parent, false);
         _Context = parent.getContext();
-        return new DrawsAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -78,32 +79,30 @@ public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder
 
         public void fetchData(int position) {
             Glide.with(_Context).load(diffResult.getCurrentList().get(position).getContentUris()).into(imageDelete);
-             myTextView.setText(diffResult.getCurrentList().get(position).getDisplayName());
-             deleteButton.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View view) {
-                     try {
-                         RemovingDialog paint = new RemovingDialog();
-                         paint.show(((Activity) _Context).getFragmentManager(), "");
-                         paint.setOnRemoveListener(() -> {
-//                        String imagesDir = Environment.getExternalStoragePublicDirectory(
-//                                Environment.DIRECTORY_DCIM).toString() + File.separator + "DCIM/NoteBook";
-//                        _Context.deleteFile( imagesDir);
-//                        File file = new File(imagesDir);
-//                        if(file.exists());
-//                        file.delete();
-                         });
+            myTextView.setText(diffResult.getCurrentList().get(position).getDisplayName());
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
 
-                     } catch (Exception e) {
-                         e.printStackTrace();
-                     }
+                        contractor.deleteItem(diffResult.getCurrentList().get(position).getContentUris(),diffResult.getCurrentList().get(position).getId());
 
-
-                 }
-             });
-        }
+                    } catch (Exception e) {
+                        Log.e("showAllImages", "onViewCreated: "+e.getMessage() );
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
+
+
+
+    public interface ContractWithDialog {
+        void deleteItem(Uri uri,int id);
+    }
+
+}
 
 
 

@@ -2,6 +2,10 @@ package com.amir.ss.noteproject.data.di;
 
 import static com.amir.ss.noteproject.data.di.local.LocalModule.provideDataBase;
 
+import android.net.Uri;
+
+import com.amir.ss.noteproject.data.datasource.file.DeleteFileSource;
+import com.amir.ss.noteproject.data.datasource.file.DeleteFileSourceImp;
 import com.amir.ss.noteproject.data.datasource.file.ImageFileSource;
 import com.amir.ss.noteproject.data.datasource.file.ImageFilesSourceImp;
 import com.amir.ss.noteproject.data.datasource.file.InsertFileSource;
@@ -16,6 +20,8 @@ import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSource;
 import com.amir.ss.noteproject.data.datasource.local.update.UpdateNotesSourceImp;
 import com.amir.ss.noteproject.data.di.local.DataSourceLocalModule;
 import com.amir.ss.noteproject.data.di.local.RepositoryLocalModule;
+import com.amir.ss.noteproject.data.repository.file.DeleteFileRepository;
+import com.amir.ss.noteproject.data.repository.file.DeleteFileRepositoryImp;
 import com.amir.ss.noteproject.data.repository.file.ImagesFileRepository;
 import com.amir.ss.noteproject.data.repository.file.ImagesFileRepositoryImp;
 import com.amir.ss.noteproject.data.repository.file.InsertFileRepository;
@@ -67,6 +73,7 @@ public class AppContainer {
     }
 
 
+
     // for files
     private InsertFileSource provideInsertFileSource(){
         return  new InsertFileSourceImp();
@@ -74,6 +81,7 @@ public class AppContainer {
     private ImageFileSource provideImageFileSource(){
         return new ImageFilesSourceImp();
     }
+    private DeleteFileSource provideDeleteFileSource(){return new DeleteFileSourceImp();}
 
     private InsertFileRepository  provideInsertFileRepository(){
         return new InsertFileRepositoryImp(provideInsertFileSource());
@@ -81,8 +89,13 @@ public class AppContainer {
     private ImagesFileRepository provideImagesFileRepository(){
         return new ImagesFileRepositoryImp(provideImageFileSource());
     }
+    private DeleteFileRepository provideDeleteFileRepository(){
+        return new DeleteFileRepositoryImp(provideDeleteFileSource());
+    }
+
+
     public DrawsViewModel ProvideDrawsViewModel(){
-        return new DrawsViewModel(provideImagesFileRepository(),provideInsertFileRepository());
+        return new DrawsViewModel(provideImagesFileRepository(),provideInsertFileRepository(),provideDeleteFileRepository());
     }
 
 
