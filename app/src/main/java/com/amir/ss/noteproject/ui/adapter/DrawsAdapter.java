@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.amir.ss.noteproject.R;
 import com.amir.ss.noteproject.data.model.ContentModel;
 import com.bumptech.glide.Glide;
@@ -24,9 +25,11 @@ public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder
 
     Context _Context;
     ContractWithDialog contractor;
+
     public void setOnContractor(ContractWithDialog contractor) {
         this.contractor = contractor;
     }
+
     public void submitList(List<ContentModel> list) {
         diffResult.submitList(list);
     }
@@ -35,7 +38,7 @@ public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder
             new DiffUtil.ItemCallback<ContentModel>() {
                 @Override
                 public boolean areItemsTheSame(@NonNull ContentModel oldItem, @NonNull ContentModel newItem) {
-                    return oldItem.getId() == newItem.getId();
+                    return oldItem.getId() == newItem.getId() && oldItem.getContentUris() == newItem.getContentUris() && oldItem.getDisplayName() == newItem.getDisplayName();
                 }
 
                 @Override
@@ -85,10 +88,10 @@ public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder
                 public void onClick(View view) {
                     try {
 
-                        contractor.deleteItem(diffResult.getCurrentList().get(position).getContentUris(),diffResult.getCurrentList().get(position).getId());
+                        contractor.deleteItem(diffResult.getCurrentList().get(position).getContentUris(), diffResult.getCurrentList().get(position).getId());
 
                     } catch (Exception e) {
-                        Log.e("showAllImages", "onViewCreated: "+e.getMessage() );
+                        Log.e("showAllImages", "onViewCreated: " + e.getMessage());
                         e.printStackTrace();
                     }
                 }
@@ -97,9 +100,8 @@ public class DrawsAdapter extends RecyclerView.Adapter<DrawsAdapter.MyViewHolder
     }
 
 
-
     public interface ContractWithDialog {
-        void deleteItem(Uri uri,int id);
+        void deleteItem(Uri uri, int id);
     }
 
 }
